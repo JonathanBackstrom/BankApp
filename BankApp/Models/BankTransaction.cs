@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankApp;
+namespace BankApp.Models;
 
 internal class BankTransaction
 {

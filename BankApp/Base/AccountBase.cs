@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BankApp.Models;
 
 namespace BankApp.Base;
 
@@ -14,6 +15,12 @@ internal abstract class AccountBase
     internal decimal IntrestRate { get; set; } = 0;
 
     protected List<BankTransaction> BankTransactions = new List<BankTransaction>();
+
+    protected AccountBase(string accountName, string accountNumber)
+    {
+        AccountName = accountName;
+        AccountNumber = accountNumber;
+    }
 
     internal abstract decimal Balance();
     

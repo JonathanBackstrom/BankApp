@@ -7,9 +7,10 @@ namespace BankApp.Accounts;
 
 internal class UddevallaAccount : AccountBase
 {
+    public UddevallaAccount(string name, string number) : base(name, number) { }
+
     internal override decimal Balance()
     {
-        var t = BankTransactions.Sum(x => x.Amount);
-        return t + StartingBalance;
+        return BankTransactions.Sum(x => x.Amount) + StartingBalance;
     }
 }

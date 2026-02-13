@@ -23,13 +23,13 @@ internal abstract class AccountBase
     }
 
     internal abstract decimal Balance();
-    
-    internal virtual void Deposit(decimal amount)
+
+    internal virtual bool Deposit(decimal amount)
     {
         if (amount <= 0)
         {
-           Console.WriteLine("Amount must be greater than zero.");
-            return;
+            Console.WriteLine("Beloppet måste vara större än noll.");
+            return false; 
         }
 
         var t = new BankTransaction
@@ -38,20 +38,22 @@ internal abstract class AccountBase
             TransactionalDate = DateTime.Now
         };
         BankTransactions.Add(t);
+        return true;
     }
-    internal virtual void Withdraw(decimal amount)
+
+    internal virtual bool Withdraw(decimal amount)
     {
         var balance = Balance();
         if (amount <= 0)
         {
-            Console.WriteLine("Amount must be greater than zero.");
-            return;
+            Console.WriteLine("Beloppet måste vara större än noll.");
+            return false;
         }
 
         if (balance < amount)
         {
-            Console.WriteLine("Insufficent funds");
-            return;
+            Console.WriteLine("Otillräckligt saldo"); 
+            return false;
         }
 
         var t = new BankTransaction
@@ -61,5 +63,6 @@ internal abstract class AccountBase
         };
 
         BankTransactions.Add(t);
+        return true;
     }
 }

@@ -7,7 +7,10 @@ namespace BankApp.Accounts;
 
 internal class UddevallaAccount : AccountBase
 {
-    public UddevallaAccount(string name, string number) : base(name, number) { }
+    public UddevallaAccount(string name, string number) : base(name, number)
+    {
+        InterestRate = 0.045m;
+    }
 
     internal override decimal Balance()
     {

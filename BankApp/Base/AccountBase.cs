@@ -12,7 +12,7 @@ internal abstract class AccountBase
     internal string AccountName { get; set; } = "";
     internal string AccountNumber { get; set; }= "";
 
-    internal decimal IntrestRate { get; set; } = 0;
+    public decimal InterestRate { get; protected set; }
 
     protected List<BankTransaction> BankTransactions = new List<BankTransaction>();
 

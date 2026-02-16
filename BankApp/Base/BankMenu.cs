@@ -89,7 +89,7 @@ internal class BankMenu
         if (!_bank.Accounts.Any()) Console.WriteLine("Inga konton hittades.");
 
         foreach (var acc in _bank.Accounts)
-            Console.WriteLine($"Konto: {acc.AccountName} | Nr: {acc.AccountNumber} | Saldo: {acc.Balance():C}");
+            Console.WriteLine($"Konto: {acc.AccountName} | Nr: {acc.AccountNumber} | Ränta: {acc.InterestRate:P1} | Saldo: {acc.Balance():C}");
         Wait();
     }
     private void CreateAccount()
@@ -186,7 +186,7 @@ private void ShowSingleAccountMenu(AccountBase account)
         {
             Console.Clear();
             Console.WriteLine($"=== HANTERAR KONTO: {account.AccountName} ({account.AccountNumber}) ===");
-            Console.WriteLine($"Saldo: {account.Balance()} kr");
+            Console.WriteLine($"Saldo: {account.Balance():C} | Ränta: {account.InterestRate:P1} ");
             Console.WriteLine("[1] Sätt in pengar");
             Console.WriteLine("[2] Ta ut pengar");
             Console.WriteLine("[3] Tillbaka till huvudmenyn");

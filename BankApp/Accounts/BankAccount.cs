@@ -7,7 +7,9 @@ namespace BankApp.Accounts;
 internal class BankAccount : AccountBase
 {
     public BankAccount(string name, string number) : base(name, number)
-    { }
+    {
+        InterestRate = 0.01m;
+    }
 
     internal override decimal Balance()
     {

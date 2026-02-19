@@ -10,7 +10,7 @@ internal enum MenuOption
     SkapaKonto = 2,
     TaBortKonto = 3,
     HanteraKonton = 4,
-    Exit = 5,
-    RäknaRänta = 6,
+    RäknaRänta = 5,
+    Exit = 6,
     None = 0
 }

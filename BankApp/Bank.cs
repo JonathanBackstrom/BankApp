@@ -32,6 +32,7 @@ internal class Bank
         return false;
     }
 
+    // Beräknar och visar den årliga räntan för testkonton, samt den totala räntan banken måste betala ut.
     public void ProcessYearlyInterest(int year)
     {
         Console.WriteLine($"{"KONTOTYP",-25} | {"RÄNTA",8} | {"SALDO",12} | {"RÄNTEVINST",12}");

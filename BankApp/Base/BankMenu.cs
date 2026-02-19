@@ -234,7 +234,8 @@ private void ShowSingleAccountMenu(AccountBase account)
             }
         }
     }
-
+    //Metod som hämar från Bank-klassen, och visar en tabell med alla konton,
+    //deras räntesats, saldo och den beräknade räntevinsten för året 2025.
     private void CalculateInterest()
     {
         Console.Clear();

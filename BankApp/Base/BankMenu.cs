@@ -63,9 +63,12 @@ internal class BankMenu
                 ManageAccount();
                 break;
             default:
-                Console.WriteLine("Ogiltigt val, försök igen!");
-                Wait();
+            case MenuOption.RäknaRänta:
+                CalculateInterest();
                 break;
+               Console.WriteLine("Ogiltigt val, försök igen!");
+               Wait();
+               break;
         }
     }
 
@@ -79,6 +82,7 @@ internal class BankMenu
             '3' => MenuOption.TaBortKonto,
             '4' => MenuOption.HanteraKonton,
             '5' => MenuOption.Exit,
+            '6' => MenuOption.RäknaRänta,
             _ => MenuOption.None
         };
     }

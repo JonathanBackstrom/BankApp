@@ -24,7 +24,7 @@ internal abstract class AccountBase
 
     internal abstract decimal Balance();
 
-    internal virtual bool Deposit(decimal amount)
+    internal virtual bool Deposit(decimal amount, DateTime? date = null)
     {
         if (amount <= 0)
         {
@@ -35,7 +35,7 @@ internal abstract class AccountBase
         var t = new BankTransaction
         {
             Amount = amount,
-            TransactionalDate = DateTime.Now
+            TransactionalDate = date ?? DateTime.Now
         };
         BankTransactions.Add(t);
         return true;
@@ -64,5 +64,23 @@ internal abstract class AccountBase
 
         BankTransactions.Add(t);
         return true;
+    }
+
+    public decimal CalculateYearlyInterest(int year)
+    {
+        decimal totalInterest = 0;
+        DateTime startDate = new DateTime(year, 1, 1);
+        DateTime endDate = new DateTime(year, 12, 31);
+
+        for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+        {
+            decimal balanceAtDate = BankTransactions
+                .Where(t => t.TransactionalDate.Date <= date.Date)
+                .Sum(t => t.Amount);
+
+            totalInterest += (balanceAtDate * InterestRate) / 365;
+        }
+
+        return totalInterest;
     }
 }

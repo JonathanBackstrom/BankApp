@@ -29,7 +29,8 @@ internal class BankMenu
             Console.WriteLine("[2] Skapa konto");
             Console.WriteLine("[3] Ta bort konto");
             Console.WriteLine("[4] Hantera konto");
-            Console.WriteLine("[5] Avsluta");
+            Console.WriteLine("[5] Räkna ut ränta (2025)");
+            Console.WriteLine("[6] Avsluta");
 
             MenuOption option = GetUserOption();
 
@@ -62,10 +63,10 @@ internal class BankMenu
             case MenuOption.HanteraKonton:
                 ManageAccount();
                 break;
-            default:
             case MenuOption.RäknaRänta:
                 CalculateInterest();
                 break;
+            default:
                Console.WriteLine("Ogiltigt val, försök igen!");
                Wait();
                break;
@@ -81,8 +82,8 @@ internal class BankMenu
             '2' => MenuOption.SkapaKonto,
             '3' => MenuOption.TaBortKonto,
             '4' => MenuOption.HanteraKonton,
-            '5' => MenuOption.Exit,
-            '6' => MenuOption.RäknaRänta,
+            '5' => MenuOption.RäknaRänta,
+            '6' => MenuOption.Exit,
             _ => MenuOption.None
         };
     }
@@ -232,6 +233,18 @@ private void ShowSingleAccountMenu(AccountBase account)
                     break;
             }
         }
+    }
+    //Metod som hämar från Bank-klassen, och visar en tabell med alla konton,
+    //deras räntesats, saldo och den beräknade räntevinsten för året 2025.
+    private void CalculateInterest()
+    {
+        Console.Clear();
+        Console.WriteLine("=== RÄNTEUTBETALNING (DAG-FÖR-DAG BERÄKNING) ===");
+
+        _bank.ProcessYearlyInterest(2025);
+
+        Console.WriteLine("\nBeräkningen är slutförd baserat på 365 dagar.");
+        Wait();
     }
     private void Wait()
     {

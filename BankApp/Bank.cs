@@ -32,6 +32,26 @@ internal class Bank
         return false;
     }
 
-    
+    // Beräknar och visar den årliga räntan för testkonton, samt den totala räntan banken måste betala ut.
+    public void ProcessYearlyInterest(int year)
+    {
+        Console.WriteLine($"{"KONTOTYP",-25} | {"RÄNTA",8} | {"SALDO",12} | {"RÄNTEVINST",12}");
+        Console.WriteLine(new string('-', 60));
+
+        decimal totalBankInterest = 0;
+
+        foreach (var account in Accounts)
+        {
+            decimal interest = account.CalculateYearlyInterest(year);
+            totalBankInterest += interest;
+
+            
+            Console.WriteLine($"{account.AccountName,-20} | " + $"{account.InterestRate,8:P1} | " + $"{account.Balance(),12:C} | " + $"{interest,12:C}");
+        }
+
+        Console.WriteLine(new string('-', 60));
+        Console.WriteLine($"Total beräknad ränta att utbetala: {totalBankInterest:C}");
+    }
+
 }
 

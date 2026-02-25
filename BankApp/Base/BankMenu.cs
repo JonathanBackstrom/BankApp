@@ -91,10 +91,15 @@ internal class BankMenu
     {
         Console.Clear();
         Console.WriteLine("=== ALLA KONTON ===");
-        if (!_bank.Accounts.Any()) Console.WriteLine("Inga konton hittades.");
+        if (!_bank.Accounts.Any())
+        {
+        Console.WriteLine("Inga konton hittades.");
+        }
 
         foreach (var acc in _bank.Accounts)
+        {
             Console.WriteLine($"Konto: {acc.AccountName} | Nr: {acc.AccountNumber} | Ränta: {acc.InterestRate:P1} | Saldo: {acc.Balance():C}");
+        }
         Wait();
     }
     private void CreateAccount()

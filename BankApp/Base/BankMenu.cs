@@ -91,10 +91,15 @@ internal class BankMenu
     {
         Console.Clear();
         Console.WriteLine("=== ALLA KONTON ===");
-        if (!_bank.Accounts.Any()) Console.WriteLine("Inga konton hittades.");
+        if (!_bank.Accounts.Any())
+        {
+        Console.WriteLine("Inga konton hittades.");
+        }
 
         foreach (var acc in _bank.Accounts)
+        {
             Console.WriteLine($"Konto: {acc.AccountName} | Nr: {acc.AccountNumber} | Ränta: {acc.InterestRate:P1} | Saldo: {acc.Balance():C}");
+        }
         Wait();
     }
     private void CreateAccount()
@@ -234,8 +239,7 @@ private void ShowSingleAccountMenu(AccountBase account)
             }
         }
     }
-    //Metod som hämar från Bank-klassen, och visar en tabell med alla konton,
-    //deras räntesats, saldo och den beräknade räntevinsten för året 2025.
+    
     private void CalculateInterest()
     {
         Console.Clear();

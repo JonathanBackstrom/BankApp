@@ -23,14 +23,7 @@ internal class BankMenu
 
         while (isRunning)
         {
-            Console.Clear();
-            Console.WriteLine("=== BANK OF UDDEVALLA ===");
-            Console.WriteLine("[1] Visa konton");
-            Console.WriteLine("[2] Skapa konto");
-            Console.WriteLine("[3] Ta bort konto");
-            Console.WriteLine("[4] Hantera konto");
-            Console.WriteLine("[5] Räkna ut ränta (2025)");
-            Console.WriteLine("[6] Avsluta");
+            AccountMenu();
 
             MenuOption option = GetUserOption();
 
@@ -45,6 +38,18 @@ internal class BankMenu
                 HandleOption(option);
             }
         }
+    }
+
+    private static void AccountMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("=== BANK OF UDDEVALLA ===");
+        Console.WriteLine("[1] Visa konton");
+        Console.WriteLine("[2] Skapa konto");
+        Console.WriteLine("[3] Ta bort konto");
+        Console.WriteLine("[4] Hantera konto");
+        Console.WriteLine("[5] Räkna ut ränta (2025)");
+        Console.WriteLine("[6] Avsluta");
     }
 
     private void HandleOption(MenuOption option)

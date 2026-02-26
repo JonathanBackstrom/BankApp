@@ -1,0 +1,19 @@
+﻿using BankApp.Base;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BankApp.Accounts;
+
+internal class IcaAccount : AccountBase
+{
+    public IcaAccount(string name, string number) : base(name, number)
+    {
+        InterestRate = 0.03m;
+    }
+
+    internal override decimal Balance()
+    {
+        return BankTransactions.Sum(x => x.Amount) + StartingBalance;
+    }
+}

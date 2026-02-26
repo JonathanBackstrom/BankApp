@@ -1,4 +1,5 @@
 ﻿using BankApp.Accounts;
+using BankApp.Factories;
 using BankApp.Models;
 using BankApp.Utils;
 using System;
@@ -111,35 +112,41 @@ internal class BankMenu
     {
         Console.Clear();
         Console.WriteLine("=== SKAPA NYTT KONTO ===");
-        Console.WriteLine("Välj typ: [1] Bankkonto [2] ISK [3] UddevallaKonto");
-        var choice = Console.ReadLine();
+        Console.WriteLine("Välj typ: [1] Bankkonto [2] ISK [3] Uddevalla-Konto [4] Coop-Konto [5] Ica-Konto");
+        var choiceInput = Console.ReadLine();
+
+        //Validera att input är en giltig enum och definierad i AccountType
+        if (!Enum.TryParse(choiceInput, out AccountType selectedType) || !Enum.IsDefined(typeof(AccountType), selectedType))
+        {
+            Console.WriteLine("Ogiltigt val Du måste välja mellan 1 - 5.");
+            Wait();
+            return;
+        }
 
         Console.Clear();
+        //AccountName
         Console.Write("Ange namn för ditt konto: ");
-        string name = Console.ReadLine() ?? "Namnlöst";
+        string accountName = Console.ReadLine() ?? "Namnlöst";
 
-        string nr = InputValidator.GetValidAccountNumber("Ange kontonummer: ");
+        //AccountNumber
+        string accountNumber = InputValidator.GetValidAccountNumber("Ange kontonummer: ");
 
-        if (choice == "1")
+        //Skapa AccountDetails och sedan konto via fabriken
+        var accountDetails = new AccountDetails
         {
-            _bank.AddAccount(new BankAccount(name, nr));
-        }
-        else if (choice == "2")
-        {
-            _bank.AddAccount(new IskAccount(name, nr));
-        }
-        else if (choice == "3")
-        {
-            _bank.AddAccount(new UddevallaAccount(name, nr));
-        }
-        else
-        {
-            Console.WriteLine("\nOgiltigt val av kontotyp! Skapar ett standard Bankkonto.");
-            _bank.AddAccount(new BankAccount(name, nr));
-        }
+            AccountName = accountName,
+            AccountNumber = accountNumber,
+            AccountType = selectedType
+        };
+
+        //Skapa konto via fabriken
+        var newAccount = AccountFactory.CreateAccount(accountDetails);
+
+        //Lägg till det nya kontot i banken
+        _bank.AddAccount(newAccount);
 
         Console.Clear();
-        Console.WriteLine("\nKonto har skapats framgångsrikt!");
+        Console.WriteLine($"Konto har skapats framgångsrikt! - {newAccount.AccountName}");
         Wait();
     }
     private void RemoveAccount()

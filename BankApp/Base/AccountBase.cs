@@ -14,7 +14,7 @@ internal abstract class AccountBase
 
     public decimal InterestRate { get; protected set; }
 
-    protected List<BankTransaction> BankTransactions = new List<BankTransaction>();
+    protected List<BankTransaction> BankTransactions = new();
 
     protected AccountBase(string accountName, string accountNumber)
     {
@@ -69,8 +69,8 @@ internal abstract class AccountBase
     public decimal CalculateYearlyInterest(int year)
     {
         decimal totalInterest = 0;
-        DateTime startDate = new DateTime(year, 1, 1);
-        DateTime endDate = new DateTime(year, 12, 31);
+        DateTime startDate = new(year, 1, 1);
+        DateTime endDate = new (year, 12, 31);
 
         for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
         {

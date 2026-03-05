@@ -12,7 +12,7 @@ public abstract class AccountBase
     public string AccountName { get; set; } = "";
     public string AccountNumber { get; set; }= "";
 
-    public decimal InterestRate { get; protected set; }
+    public decimal InterestRate { get; set; }
 
     protected List<BankTransaction> BankTransactions = new();
 

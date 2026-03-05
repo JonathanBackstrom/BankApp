@@ -1,15 +1,16 @@
-﻿using BankApp.Accounts;
-using BankApp.Factories;
-using BankApp.Models;
+﻿using Entities.Accounts;
+using Services.Factories;
 using BankApp.Utils;
+using Entities.Base;
+using Entities.Types;
 using System;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 
-namespace BankApp.Base;
+namespace BankApp.Menu;
 
-internal class BankMenu
+public class BankMenu
 {
     private readonly Bank _bank;
 

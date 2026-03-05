@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankApp.Models;
+namespace Entities.Types;
 
-internal enum AccountType
+public enum AccountType
 {
     BankAccount = 1,
     IskAccount = 2,

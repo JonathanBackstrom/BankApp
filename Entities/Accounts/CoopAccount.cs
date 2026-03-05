@@ -1,18 +1,18 @@
-﻿using BankApp.Base;
+﻿using Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankApp.Accounts;
+namespace Entities.Accounts;
 
-internal class CoopAccount : AccountBase
+public class CoopAccount : AccountBase
 {
     public CoopAccount(string name, string number) : base(name, number)
     {
         InterestRate = 0.02m;
     }
 
-    internal override decimal Balance()
+    public override decimal Balance()
     {
         return BankTransactions.Sum(x => x.Amount) + StartingBalance;
     }

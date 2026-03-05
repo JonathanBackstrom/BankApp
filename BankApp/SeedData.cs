@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BankApp.Models;
-using BankApp.Accounts;
+using Entities.Types;
+using Entities.Accounts;
 
 namespace BankApp.Utils;
 
-internal class SeedData
+public class SeedData
 {
     //Testdata för att visa att ränta fungerar, och att det går att göra insättningar på kontot.
     public static void Initialize(Bank bank)

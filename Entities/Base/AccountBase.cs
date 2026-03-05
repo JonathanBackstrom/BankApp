@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BankApp.Models;
+using Entities.Types;
 
-namespace BankApp.Base;
+namespace Entities.Base;
 
-internal abstract class AccountBase
+public abstract class AccountBase
 {
-    internal Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
     protected decimal StartingBalance { get; set; } = 0;
-    internal string AccountName { get; set; } = "";
-    internal string AccountNumber { get; set; }= "";
+    public string AccountName { get; set; } = "";
+    public string AccountNumber { get; set; }= "";
 
-    public decimal InterestRate { get; protected set; }
+    public decimal InterestRate { get; set; }
 
     protected List<BankTransaction> BankTransactions = new();
 
@@ -22,9 +22,9 @@ internal abstract class AccountBase
         AccountNumber = accountNumber;
     }
 
-    internal abstract decimal Balance();
+    public abstract decimal Balance();
 
-    internal virtual bool Deposit(decimal amount, DateTime? date = null)
+    public virtual bool Deposit(decimal amount, DateTime? date = null)
     {
         if (amount <= 0)
         {
@@ -41,7 +41,7 @@ internal abstract class AccountBase
         return true;
     }
 
-    internal virtual bool Withdraw(decimal amount)
+    public virtual bool Withdraw(decimal amount)
     {
         var balance = Balance();
         if (amount <= 0)

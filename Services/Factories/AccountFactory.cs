@@ -1,15 +1,15 @@
-﻿using BankApp.Accounts;
-using BankApp.Base;
-using BankApp.Models;
+﻿using Entities.Accounts;
+using Entities.Base;
+using Entities.Types;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankApp.Factories;
+namespace Services.Factories;
 
-internal static class AccountFactory
+public static class AccountFactory
 {
-    internal static AccountBase CreateAccount(AccountDetails accountDetails)
+    public static AccountBase CreateAccount(AccountDetails accountDetails)
     {
         return accountDetails.AccountType switch
         {

@@ -1,3 +1,18 @@
 <Solution>
-  <Project Path="BankApp/BankApp.csproj" />
+  <Folder Name="/1. Domain/">
+    <Project Path="Entities/Entities.csproj" Id="4ee960ff-05e5-47a7-a7c6-2263381296ac" />
+  </Folder>
+  <Folder Name="/2. Application/">
+    <Project Path="Services/Services.csproj" Id="3bea4f33-4a08-4919-9043-1592f9195156" />
+  </Folder>
+  <Folder Name="/3. Infrastructure/">
+    <Project Path="EF_SQL/EF_SQL.csproj" Id="b49f32b7-63b1-4e37-a246-14f63d033b42" />
+  </Folder>
+  <Folder Name="/4. Presentation/">
+    <Project Path="BankApp/BankApp.csproj" />
+  </Folder>
+  <Folder Name="/5. Test/">
+    <Project Path="Entities_Test/Entities_Test.csproj" Id="ba880d83-9222-49d3-9fae-6e30cbdfc879" />
+    <Project Path="Service_Test/Services_Test.csproj" Id="251c00b4-24cf-4db5-ae96-5827cede0c02" />
+  </Folder>
 </Solution>

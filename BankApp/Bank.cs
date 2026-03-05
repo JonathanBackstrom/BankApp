@@ -1,14 +1,15 @@
-﻿using BankApp.Base;
+﻿using Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using BankApp.Accounts;
-using BankApp.Models;
+using Entities.Accounts;
+using Entities.Types;
 using BankApp.Utils;
+using BankApp.Menu;
 
 namespace BankApp;
 
-internal class Bank
+public class Bank
 {
     public List<AccountBase> Accounts { get; set; } = new List<AccountBase>();
 

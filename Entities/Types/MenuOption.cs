@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankApp.Models;
+namespace Entities.Types;
 
-internal enum MenuOption
+public enum MenuOption
 {
     VisaKonton = 1,
     SkapaKonto = 2,

@@ -1,10 +1,10 @@
-﻿using BankApp.Accounts;
-using BankApp.Base;
+﻿using Entities.Accounts;
+using Entities.Base;
 using BankApp.Utils;
 
 namespace BankApp;
 
-internal class Program
+public class Program
 {
     static void Main(string[] args)
     {
